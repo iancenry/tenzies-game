@@ -2,32 +2,38 @@ import { useState } from "react"
 import Header from "./components/Header"
 import Die from "./components/Die"
 import Button from "./components/Button"
+import {nanoid} from 'nanoid'
 
 const App = () => {
   const [die, setDice] = useState(allNewDice())
   const [tenzies, setTenzies] = useState(false)
 
   function randomDieValue(){
-    return  Math.floor(Math.random() * 6) + 1
+    return  Math.ceil(Math.random() * 6)
   }
 
+  // create an array of 10 objects that will be mapped to dice
   function allNewDice(){
     const newArray = []
     for(let i = 0; i < 10; i++ ){
       const newDie = {
-        value : randomDieValue(),
+        value : randomDieValue(), 
         held : false,
-        id: i + 1
+        id: nanoid()
       }
       newArray.push(newDie)
     }
     return newArray;
   }
 
+  //an array of die components
+  const diceElements = die.map(die => <Die key={die.id} {...die} hold={holdDice} />)
+
+
   function rollUnheldDice(){
     if(!tenzies){
       setDice(oldDice => oldDice.map((die, i) => (
-        die.held ? die: {value : randomDieValue(), held: false }
+        die.held ? die: {...die, value : randomDieValue(), held: false }
       )))
     }else{
       setDice(allNewDice())
@@ -35,13 +41,12 @@ const App = () => {
     }
   }
 
+  //change 'held' value of die onclick
   function holdDice(id){
     setDice(prevDice => prevDice.map(die => {
       return die.id === id? {...die, held: !die.held} : die
     }))
   }
-
-  const diceElements = die.map(die => <Die key={die.id} {...die} hold={()=> holdDice()} />)
   
 
   return (
@@ -51,7 +56,7 @@ const App = () => {
       <div className="boxes">
         {diceElements}
       </div>
-      <Button />
+      <Button tenzies={tenzies} rollUnheldDice={rollUnheldDice} />
     </div>
   )
 }

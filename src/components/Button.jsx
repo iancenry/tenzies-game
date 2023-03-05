@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Button = () => {
+const Button = (props) => {
   return (
-    <div className='btn'>Roll</div>
+    <div className='btn' onClick={props.rollUnheldDice}>{props.tenzies ? "Reset Game": "Roll"}</div>
   )
 }
 
