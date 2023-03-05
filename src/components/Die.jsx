@@ -4,7 +4,7 @@ const Die = (props) => {
     backgroundColor: props.held ? '#59E391': '#FFFFFF'
   }
   return (
-    <div style={styles} className='die' onClick={() => props.hold(props.id)}>{props.value}</div>
+    <div style={styles} className='die' onClick={props.hold}>{props.value}</div>
   )
 }
 
