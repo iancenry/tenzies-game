@@ -1,12 +1,20 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Header from "./components/Header"
 import Die from "./components/Die"
 import Button from "./components/Button"
 import {nanoid} from 'nanoid'
+import Confetti from 'react-confetti'
 
 const App = () => {
-  const [die, setDice] = useState(allNewDice())
+  const [dice, setDice] = useState(allNewDice())
   const [tenzies, setTenzies] = useState(false)
+  
+  useEffect(()=>{
+    //check if all dice are held and have same value
+    if(dice.every(die => die.value === dice[0].value && die.held)){
+      setTenzies(prevValue => !prevValue)
+    }
+  }, [dice])
 
   //generate random num for die face
   function randomDieValue(){
@@ -58,13 +66,13 @@ const App = () => {
   }
 
   //an array of die components
-  const diceElements = die.map(die => <Die key={die.id} {...die} hold={()=> holdDice(die.id)} />)
+  const diceElements = dice.map(die => <Die key={die.id} {...die} hold={()=> holdDice(die.id)} />)
 
   
 
   return (
     <div className="container">
-      {/* {tenzies && <Confetti/>} */}
+      {tenzies && <Confetti/>}
       <Header />
       <div className="boxes">
         {diceElements}
