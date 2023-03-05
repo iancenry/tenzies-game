@@ -1,6 +1,11 @@
 # Tenzies Web Application
 - The tenzies game replicated in react.
 
+![ten](https://user-images.githubusercontent.com/77986239/222986337-b3edfea5-eeec-45a4-b618-be5a16fe8be7.PNG)
+
+- On winning when you match all dice there is a confetti.
+![tenwin](https://user-images.githubusercontent.com/77986239/222986342-264a8add-8520-4571-a701-8d335abf1ac8.PNG)
+
 
 ## Quick Setup
 1. Fork then clone the project into local machine 🍴
@@ -12,7 +17,7 @@
 
 **NB:**
 - Better management of data to avoid derived state -  We can embed id to a function that helps manage state that is in parent  from child component to make it easier instead of accessing id props in child then passing it to the function that was passed down
-```jsx
+```js
 //Prev
 //In parent
 <Die key={die.id} {...die} hold={holdDice} />
