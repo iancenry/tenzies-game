@@ -1,5 +1,16 @@
-# Notes Web Application
+# Tenzies Web Application
+- The tenzies game replicated in react.
 
+
+## Quick Setup
+1. Fork then clone the project into local machine 🍴
+1. run 'npm install' in the root folder to install all the necessary packages 👩‍💻
+1. Might have to run **npm install react-mde --force**  since it refuses to install
+1. Happy coding 💻
+
+* Dependencies used: nanoid, react-confetti
+
+**NB:**
 - Better management of data to avoid derived state -  We can embed id to a function that helps manage state that is in parent  from child component to make it easier instead of accessing id props in child then passing it to the function that was passed down
 ```jsx
 //Prev
@@ -26,3 +37,12 @@
   }, [dice])
 
 ```
+
+TODO: 
+1. Add real dots - CSS
+2. Track number of rolls it took to win
+3. Track the time it took to win
+4. Save best time to localStorgae
+
+> Side note - add routes and combine both the guessing game and this game
+

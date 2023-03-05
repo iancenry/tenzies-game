@@ -38,13 +38,15 @@ const App = () => {
     return newArray
   }
 
-  function rollUnheldDice() {
-    setDice((oldDice) =>
-      oldDice.map((die, i) => (die.held ? die : generateNewDie()))
-    )
-    //if game won (i.e., tenzies is true) reset game on click
+  function rollDice() {
+    //if game won (i.e., tenzies is true) reset game
     if (tenzies) {
       resetGame()
+    } else {
+      //roll unheld die
+      setDice((oldDice) =>
+        oldDice.map((die) => (die.held ? die : generateNewDie()))
+      )
     }
   }
 
@@ -72,11 +74,7 @@ const App = () => {
       {tenzies && <Confetti />}
       <Header />
       <div className="boxes">{diceElements}</div>
-      <Button
-        tenzies={tenzies}
-        rollUnheldDice={rollUnheldDice}
-        resetGame={resetGame}
-      />
+      <Button tenzies={tenzies} rollDice={rollDice} />
     </div>
   )
 }
