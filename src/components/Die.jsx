@@ -1,7 +1,8 @@
 
-const Die = ({id, num, color, freeze, freezeDie}) => {
+const Die = (props) => {
+  // console.log(props.hold)
   return (
-    <div className='die' onClick={()=> freezeDie()}>{num}</div>
+    <div className='die'>{props.value}</div>
   )
 }
 

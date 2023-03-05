@@ -8,14 +8,14 @@ const App = () => {
   const [tenzies, setTenzies] = useState(false)
 
   function randomDieValue(){
-    return Math.ceil(Math.random * 6)
+    return  Math.floor(Math.random() * 6) + 1
   }
 
   function allNewDice(){
     const newArray = []
     for(let i = 0; i < 10; i++ ){
       const newDie = {
-        value : randomDieValue,
+        value : randomDieValue(),
         held : false,
         id: i + 1
       }
@@ -41,7 +41,7 @@ const App = () => {
     }))
   }
 
-  const diceElements = die.map(die => <Die key={die.id} {...die} hold={()=> holdDice} />)
+  const diceElements = die.map(die => <Die key={die.id} {...die} hold={()=> holdDice()} />)
   
 
   return (
@@ -49,7 +49,7 @@ const App = () => {
       {/* {tenzies && <Confetti/>} */}
       <Header />
       <div className="boxes">
-        {die}
+        {diceElements}
       </div>
       <Button />
     </div>
