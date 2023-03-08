@@ -4,6 +4,7 @@
   ![ten](https://user-images.githubusercontent.com/77986239/222986337-b3edfea5-eeec-45a4-b618-be5a16fe8be7.PNG)
 
 - On winning when you match all dice there is a confetti.
+
 ![tenwin](https://user-images.githubusercontent.com/77986239/222986342-264a8add-8520-4571-a701-8d335abf1ac8.PNG)
 
 
